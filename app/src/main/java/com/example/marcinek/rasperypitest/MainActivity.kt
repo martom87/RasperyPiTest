@@ -46,15 +46,21 @@ class MainActivity : Activity() {
         try {
             ledGpio = manager.openGpio(LED_PIN_NAME)
 
-            ledGpio?.setDirection(Gpio.DIRECTION_OUT_INITIALLY_LOW)
+            ledGpio?.setDirection(Gpio.DIRECTION_OUT_INITIALLY_HIGH)
 
-            ledSwitch = findViewById(R.id.ledSwitch)
+            ledSwitch = findViewById(R.id.ledSwitch) as Switch
 
             ledSwitch.isChecked = ledGpio!!.value
 
-            ledSwitch.setOnCheckedChangeListener { _, isChecked ->
+/*            ledSwitch.setOnCheckedChangeListener { _, isChecked ->
                 Log.d(TAG, "Led is ${if (isChecked) "on" else "off"}")
-                ledGpio?.value = isChecked
+                ledGpio?.value = isChecked*/
+
+                       ledSwitch.setOnCheckedChangeListener { _, unChecked ->
+                Log.d(TAG, "Led is ${if (unChecked) "on" else "off"}")
+                ledGpio?.value = unChecked
+
+
             }
         } catch (e: IOException) {
             Log.e(TAG, "Error on PeripheralIO API", e)

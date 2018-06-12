@@ -12,21 +12,20 @@
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.IOT_LAUNCHER" />
                 <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.LAUNCHER" />
+
             </intent-filter>
+
         </activity>
 
         <receiver
+            android:name="com.example.marcinek.rasperypitest.YourActivityRunOnStartup"
             android:enabled="true"
             android:exported="true"
-            android:name="com.example.marcinek.rasperypitest.yourActivityRunOnStartup"
-            android:permission="android.permission.RECEIVE_BOOT_COMPLETED">
+            android:permission="android.permission.RECEIVE_BOOT_COMPLETED"
+            >
 
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
@@ -37,9 +36,7 @@
         </receiver>
 
 
-
     </application>
-
 
 
 </manifest>
